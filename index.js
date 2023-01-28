@@ -8,7 +8,7 @@ app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
   const today = new Date();
-  const christmas = Date.parse("2019-12-24")
+  const christmas = Date.parse("2023-12-24")
   const delta = christmas - today
   res.send(`Christmas is coming in ${Math.ceil(delta / (1000*60*60*24))} days. 🎅`);
 });
