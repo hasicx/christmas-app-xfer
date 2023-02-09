@@ -3,13 +3,13 @@ kind: Pod
 metadata:
   name: "{{ include "christmas-app.fullname" . }}-test-connection"
   labels:
-{{ include "christmas-app.labels" . | nindent 4 }}
+    {{- include "christmas-app.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": test-success
+    "helm.sh/hook": test
 spec:
   containers:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "christmas-app.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "christmas-app.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

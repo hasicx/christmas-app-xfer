@@ -7,8 +7,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
+    - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
+      protocol: TCP
+      name: http
   selector:
     {{- include "christmas-app.selectorLabels" . | nindent 4 }}
