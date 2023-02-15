@@ -3,8 +3,8 @@ stages:
   - test
 
 variables:
-  ESLINT_NO_RC: "test"
-  ESLINT_EXTRA_ARGS: ""
+  ESLINT_NO_RC: "yes"
+  ESLINT_DISABLED: ""
 
 # Default example build job (copied from gitlab example)
 build-job:
@@ -21,5 +21,13 @@ custom-eslint:
     - echo "Installing ESLint..."
     - npm install eslint
     - echo "Installation complete. Running linter..."
-    - echo "placeholder - variable is ${ESLINT_NO_RC:+nonzero}"
-    - ./node_modules/.bin/eslint .
+    - |
+      if [[ -n "${ESLINT_NO_RC}" ]]; then
+        echo "Info - ESLint configuration file disabled."
+      else
+        echo "Info - Using repository configuration file."
+      fi
+    - ./node_modules/.bin/eslint ${ESLINT_NO_RC:+'--no-eslintrc'} .
+  rules:
+    - if: '$ESLINT_DISABLED'
+      when: never
