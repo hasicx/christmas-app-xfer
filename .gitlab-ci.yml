@@ -4,7 +4,7 @@ stages:
 
 variables:
   ESLINT_NO_RC: "yes"
-  ESLINT_DISABLED: ""
+  # ESLINT_DISABLED: ""
 
 # Default example build job (copied from gitlab example)
 build-job:
