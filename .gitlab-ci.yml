@@ -3,7 +3,7 @@ stages:
   - test
 
 variables:
-  ESLINT_NO_RC: "yes"
+  ESLINT_NO_RC: ""
   # ESLINT_DISABLED: ""
 
 # Default example build job (copied from gitlab example)
