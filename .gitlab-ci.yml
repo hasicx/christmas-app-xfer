@@ -3,6 +3,7 @@ stages:
   - test
 
 variables:
+  ESLINT_NO_RC: "test"
   ESLINT_EXTRA_ARGS: ""
 
 # Default example build job (copied from gitlab example)
@@ -20,4 +21,5 @@ custom-eslint:
     - echo "Installing ESLint..."
     - npm install eslint
     - echo "Installation complete. Running linter..."
+    - echo "placeholder - variable is ${ESLINT_NO_RC:+nonzero}"
     - ./node_modules/.bin/eslint .
