@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+variables:
+  ESLINT_EXTRA_ARGS: ""
+
+# Default example build job (copied from gitlab example)
+build-job:
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+# Custom eslint job
+custom-eslint:
+  stage: test
+  image: node
+  script:
+    - echo "Installing ESLint..."
+    - npm install eslint
+    - echo "Installation complete. Running linter..."
+    - ./node_modules/.bin/eslint .
